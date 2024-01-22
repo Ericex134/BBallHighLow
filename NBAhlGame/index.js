@@ -29,6 +29,8 @@ async function getPlayer() {
 
 async function round() {
   const [pOne, pTwo] = await Promise.all([getPlayer(), getPlayer()]);
+  document.getElementById("rightPoints").innerText = "";
+  document.getElementById("leftPoints").innerText = "";
 
   document.getElementById("leftName").innerHTML = pOne.player_name;
   document.getElementById("rightName").innerHTML = pTwo.player_name;
@@ -65,13 +67,6 @@ async function round() {
   document.getElementById("sc").innerText = "Score: " + count;
   document.getElementById("rightPoints").innerText = pTwo.PTS + " PTS";
   document.getElementById("leftPoints").innerText = pOne.PTS + " PTS";
-
-  const p = new Promise((resolve, reject) => {
-    setTimeout(function () {
-      document.getElementById("rightPoints").innerText = "";
-      document.getElementById("leftPoints").innerText = "";
-    }, 1000);
-  });
 
   function delay(milliseconds) {
     return new Promise((resolve) => {
